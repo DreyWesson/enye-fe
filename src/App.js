@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+// import axios from "axios";
+import { useEffect, useState } from "react";
+import "./App.css";
+import Customers from "./components/Customers";
+import { Header } from "./components/Header";
+import Loading from "./components/Loading";
 
 function App() {
+  const ListLoading = Loading(Customers);
+  const [appState, setAppState] = useState({
+    loading: false,
+    records: null,
+  });
+
+  useEffect(() => {
+    setAppState({ loading: true });
+    const apiUrl = `https://api.enye.tech/v1/challenge/records`;
+    // const fetchData = async () => {
+    //   setAppState({ loading: true });
+    //   const { data } = await axios.get(apiUrl);
+    //   setAppState({ loading: false, records: data });
+    // };
+    // fetchData();
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((records) => {
+        setAppState({ loading: false, records: records });
+      });
+  }, [setAppState]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="repo-container">
+        <ListLoading isLoading={appState.loading} records={appState.records} />
+      </div>
     </div>
   );
 }
