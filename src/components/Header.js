@@ -1,7 +1,5 @@
 import React from "react";
 import "./styles/Header.css";
-import SearchIcon from "@material-ui/icons/Search";
-import { FilterListOutlined } from "@material-ui/icons";
 
 export function Header() {
   return (
@@ -13,15 +11,6 @@ export function Header() {
         alt="cart logo"
       />
       {/* Search box */}
-      <div className="header__search">
-        <FilterListOutlined fontSize="large" className="header__searchFilter" />
-        <input
-          type="text"
-          className="header__searchInput"
-          placeholder="Search customer..."
-        />
-        <SearchIcon className="header__searchIcon" />
-      </div>
     </nav>
   );
 }

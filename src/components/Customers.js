@@ -3,11 +3,13 @@ import "./styles/Customers.css";
 import { v4 as uuidv4 } from "uuid";
 import { Pagination } from "@material-ui/lab";
 import { Button } from "@material-ui/core";
+import { Search } from "@material-ui/icons";
 
 const Customers = ({ records }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [customersPerPage] = useState(20);
   const [showMore, setShowMore] = useState(false);
+  const [searchValue, setSearchValue] = useState(null);
 
   if (!records || records.length === 0) return <p>No customers, sorry</p>;
   const { profiles } = records.records,
@@ -24,20 +26,43 @@ const Customers = ({ records }) => {
   }
 
   // Change page
-  const handleChange = (event, value) => {
-    setCurrentPage(value);
+  const handleChange = (event, value) => setCurrentPage(value);
+
+  const searchRecord = () => {
+    return profiles.filter((data) => {
+      if (searchValue == null) return data;
+      else if (
+        data.FirstName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.LastName.toLowerCase().includes(searchValue.toLowerCase())
+      ) {
+        return data;
+      }
+    });
   };
+  // searchRecord();
+  const select = searchValue === null ? currentCustomer : searchRecord();
 
   return (
     <div className="customers">
       <div className="customers__list">
-        <p>Total records: {records.size} </p>
         <p>
-          Status: <span>{records.status}</span>
+          <span>Success: </span>
+          {records.size} records loaded
         </p>
       </div>
+      <div className="header__search">
+        {/* <FilterListOutlined fontSize="large" className="header__searchFilter" /> */}
+        <input
+          type="text"
+          className="header__searchInput"
+          placeholder="Search customer..."
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
+        <Search className="header__searchIcon" />
+      </div>
+
       <div className="customers__listContainer">
-        {currentCustomer?.map(
+        {select?.map(
           ({
             FirstName,
             LastName,
