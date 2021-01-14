@@ -14,18 +14,10 @@ function App() {
 
   useEffect(() => {
     setAppState({ loading: true });
-    const apiUrl = `https://api.enye.tech/v1/challenge/records`;
-    // const fetchData = async () => {
-    //   setAppState({ loading: true });
-    //   const { data } = await axios.get(apiUrl);
-    //   setAppState({ loading: false, records: data });
-    // };
-    // fetchData();
-    fetch(apiUrl)
+
+    fetch(`https://api.enye.tech/v1/challenge/records`)
       .then((res) => res.json())
-      .then((records) => {
-        setAppState({ loading: false, records: records });
-      });
+      .then((records) => setAppState({ loading: false, records: records }));
   }, [setAppState]);
 
   return (

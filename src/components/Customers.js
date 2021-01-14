@@ -129,7 +129,7 @@ const Customers = ({ records }) => {
                   </p>
                 </div>
 
-                <div className={showMore || "customers__listMore"}>
+                <div className={`${showMore || "customers__listMore"}`}>
                   <p className="customers__detail">
                     <span>Longitude: </span>
                     {Longitude}
