@@ -60,8 +60,10 @@ const Customers = ({ records }) => {
         </p>
       </div>
       <div className="customers__search">
+        <label htmlFor="searchInput">Search</label>
         <input
           type="text"
+          id="searchInput"
           className="customers__searchInput"
           placeholder="Search customer..."
           onChange={(e) => setSearchValue(e.target.value)}

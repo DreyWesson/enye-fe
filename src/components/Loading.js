@@ -1,12 +1,13 @@
 import React from "react";
+import "./styles/Loading.css";
 
 function Loading(Component) {
   return function LoadingComponent({ isLoading, ...props }) {
     if (!isLoading) return <Component {...props} />;
     return (
-      <p style={{ textAlign: "center", fontSize: "30px" }}>
-        Hold on, fetching data may take some time :)
-      </p>
+      <div className="loader__container">
+        <div id="loader" className="m-auto mt-5 py-5"></div>
+      </div>
     );
   };
 }

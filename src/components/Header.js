@@ -10,6 +10,7 @@ export function Header() {
         src="https://cdn1.vectorstock.com/i/1000x1000/25/70/shopping-cart-icon-vector-12712570.jpg"
         alt="cart logo"
       />
+      <h4>Records</h4>
       {/* Search box */}
     </nav>
   );

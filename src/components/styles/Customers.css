@@ -48,6 +48,10 @@
   justify-content: center;
   margin: 30px;
 }
+.customers__search label {
+  position: absolute;
+  top: 9999px;
+}
 .customers__searchInput {
   height: 12px;
   padding: 15px;

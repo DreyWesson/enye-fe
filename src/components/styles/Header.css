@@ -7,12 +7,15 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 .header__logo {
-  width: 45px;
-  margin: 10px 5px;
+  width: 30px;
+  margin: 10px 10px;
   object-fit: contain;
+}
+.header h4 {
+  color: #fff;
 }
 .header__option {
   display: flex;
