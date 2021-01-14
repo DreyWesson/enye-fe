@@ -23,10 +23,22 @@ const Customers = ({ records }) => {
     return profiles.filter((data) => {
       if (searchValue == null) return data;
       else if (
+        data.CreditCardNumber.toLowerCase().includes(
+          searchValue.toLowerCase()
+        ) ||
+        data.Longitude.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.Latitude.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.DomainName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.Email.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.LastLogin.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.MacAddress.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.PhoneNumber.toLowerCase().includes(searchValue.toLowerCase()) ||
         data.FirstName.toLowerCase().includes(searchValue.toLowerCase()) ||
         data.LastName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.UserName.toLowerCase().includes(searchValue.toLowerCase()) ||
         data.Gender.toLowerCase().includes(searchValue.toLowerCase()) ||
         data.PaymentMethod.toLowerCase().includes(searchValue.toLowerCase()) ||
+        data.URL.toLowerCase().includes(searchValue.toLowerCase()) ||
         data.CreditCardType.toLowerCase().includes(searchValue.toLowerCase())
       ) {
         return data;
