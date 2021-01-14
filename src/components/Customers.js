@@ -15,15 +15,6 @@ const Customers = ({ records }) => {
   const { profiles } = records.records,
     indexOfLastCustomer = currentPage * customersPerPage,
     indexOfFirstCustomer = indexOfLastCustomer - customersPerPage;
-  const currentCustomer = profiles.slice(
-    indexOfFirstCustomer,
-    indexOfLastCustomer
-  );
-
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(records?.size / customersPerPage); i++) {
-    pageNumbers?.push(i);
-  }
 
   // Change page
   const handleChange = (event, value) => setCurrentPage(value);
@@ -43,7 +34,22 @@ const Customers = ({ records }) => {
     });
   };
   // searchRecord();
-  const select = searchValue === null ? currentCustomer : searchRecord();
+  let currentCustomers = searchValue === null ? profiles : searchRecord();
+  currentCustomers = currentCustomers.slice(
+    indexOfFirstCustomer,
+    indexOfLastCustomer
+  );
+  console.log(currentCustomers.length);
+
+  const pageNumbers = [];
+  function setResultsPerPage(length) {
+    for (let i = 1; i <= Math.ceil(length / customersPerPage); i++) {
+      pageNumbers?.push(i);
+    }
+  }
+  searchValue == null
+    ? setResultsPerPage(records?.size)
+    : setResultsPerPage(searchRecord().length);
 
   return (
     <div className="customers">
@@ -64,7 +70,7 @@ const Customers = ({ records }) => {
       </div>
 
       <div className="customers__listContainer">
-        {select?.map(
+        {currentCustomers?.map(
           ({
             FirstName,
             LastName,
