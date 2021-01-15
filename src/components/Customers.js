@@ -43,7 +43,15 @@ const Customers = ({ records }) => {
             searchValue.toLowerCase()
           ) ||
           data.URL.toLowerCase().includes(searchValue.toLowerCase()) ||
-          data.CreditCardType.toLowerCase().includes(searchValue.toLowerCase())
+          data.CreditCardType.toLowerCase().includes(
+            searchValue.toLowerCase()
+          ) ||
+          data.CreditCardNumber.includes(searchValue.toLowerCase()) ||
+          data.Longitude.toString().includes(searchValue.toLowerCase()) ||
+          data.Latitude.toString().includes(searchValue.toLowerCase()) ||
+          data.LastLogin.includes(searchValue.toLowerCase()) ||
+          data.PhoneNumber.includes(searchValue.toLowerCase()) ||
+          data.MacAddress.includes(searchValue.toLowerCase())
         ) {
           return data;
         }
