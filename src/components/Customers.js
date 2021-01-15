@@ -14,8 +14,8 @@ const Customers = ({ records }) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       "& .Mui-selected": {
-        color: " #e79324",
-        border: "1px solid #e79324",
+        color: " #844b00",
+        border: "1px solid #844b00",
         backgroundColor: "transparent",
       },
     },
