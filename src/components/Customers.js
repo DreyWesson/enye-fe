@@ -3,7 +3,6 @@ import "./styles/Customers.css";
 import { v4 as uuidv4 } from "uuid";
 import { Pagination } from "@material-ui/lab";
 import { Button } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
 
 const Customers = ({ records }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,32 +18,25 @@ const Customers = ({ records }) => {
   // Change page
   const handleChange = (event, value) => setCurrentPage(value);
 
-  const searchRecord = () => {
-    return profiles.filter((data) => {
-      if (searchValue == null) return data;
-      else if (
-        data.CreditCardNumber.toLowerCase().includes(
-          searchValue.toLowerCase()
-        ) ||
-        data.Longitude.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.Latitude.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.DomainName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.Email.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.LastLogin.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.MacAddress.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.PhoneNumber.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.FirstName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.LastName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.UserName.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.Gender.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.PaymentMethod.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.URL.toLowerCase().includes(searchValue.toLowerCase()) ||
-        data.CreditCardType.toLowerCase().includes(searchValue.toLowerCase())
-      ) {
-        return data;
-      }
+  const searchRecord = () =>
+    profiles.filter((data) => {
+      return (function name(params) {
+        if (searchValue == null) return data;
+        else if (
+          data.FirstName.toLowerCase().includes(searchValue.toLowerCase()) ||
+          data.LastName.toLowerCase().includes(searchValue.toLowerCase()) ||
+          data.UserName.toLowerCase().includes(searchValue.toLowerCase()) ||
+          data.Gender.toLowerCase().includes(searchValue.toLowerCase()) ||
+          data.PaymentMethod.toLowerCase().includes(
+            searchValue.toLowerCase()
+          ) ||
+          data.URL.toLowerCase().includes(searchValue.toLowerCase()) ||
+          data.CreditCardType.toLowerCase().includes(searchValue.toLowerCase())
+        ) {
+          return data;
+        }
+      })();
     });
-  };
   // searchRecord();
   let currentCustomers = searchValue === null ? profiles : searchRecord();
   currentCustomers = currentCustomers.slice(
@@ -68,7 +60,7 @@ const Customers = ({ records }) => {
       <div className="customers__list">
         <p>
           <span>Success: </span>
-          {records.size} records loaded
+          {records.size} profiles loaded
         </p>
       </div>
       <div className="customers__search">
@@ -80,7 +72,6 @@ const Customers = ({ records }) => {
           placeholder="Search customer..."
           onChange={(e) => setSearchValue(e.target.value)}
         />
-        <Search className="customers__searchIcon" />
       </div>
 
       <div className="customers__listContainer">

@@ -58,8 +58,10 @@
 }
 .customers__searchInput {
   height: 12px;
-  padding: 15px;
+  border: 1px solid gray;
+  padding: 17px;
   width: 80vw;
+  border-radius: 20px;
   outline-width: 0;
 }
 .customers__searchIcon {
