@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   margin: 10px;
-  color: rgb(109, 108, 108);
+  color: #70757a;
 }
 
 .customers__list span {
@@ -29,8 +29,9 @@
 .customers__searchResults {
   text-align: center;
   padding: 5px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
+  color: #70757a;
 }
 .customers__pagination {
   width: 100%;
