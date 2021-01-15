@@ -67,7 +67,14 @@
 .customers__searchIcon {
   /* padding: 15px; */
   height: 33px !important;
-  background-color: #cd9042;
+  background-color: #3f51b5;
+  color: rgba(63, 81, 181, 0.5);
+  border-right: 1px solid rgba(181, 154, 63, 0.12);
+}
+.customers__showBtn {
+  font-size: 13px !important;
+  text-transform: none !important;
+  color: #e79324 !important;
 }
 
 @media only screen and (min-width: 576px) {

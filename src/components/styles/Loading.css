@@ -8,9 +8,9 @@
 #loader {
   border: 1rem solid #f8f9fa;
   border-radius: 50%;
-  border-top: 1rem solid #007bff;
-  width: 12rem;
-  height: 12rem;
+  border-top: 1rem solid #e79324;
+  width: 8rem;
+  height: 8rem;
   animation: spin 2s linear infinite;
 }
 @keyframes spin {

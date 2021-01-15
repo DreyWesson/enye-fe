@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import "./styles/Customers.css";
 import { v4 as uuidv4 } from "uuid";
 import { Pagination } from "@material-ui/lab";
-import { Button } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 
 const Customers = ({ records }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [customersPerPage] = useState(20);
   const [showMore, setShowMore] = useState(false);
   const [searchValue, setSearchValue] = useState(null);
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      "& .Mui-selected": {
+        color: " #e79324",
+        border: "1px solid #e79324",
+        backgroundColor: "transparent",
+      },
+    },
+  }));
+  const classes = useStyles();
 
   if (!records || records.length === 0) return <p>No customers, sorry</p>;
   const { profiles } = records.records,
@@ -163,6 +173,7 @@ const Customers = ({ records }) => {
                   </p>
                 </div>
                 <Button
+                  className="customers__showBtn"
                   onClick={(e) =>
                     !showMore ? setShowMore(true) : setShowMore(false)
                   }
@@ -178,7 +189,7 @@ const Customers = ({ records }) => {
         <Pagination
           count={pageNumbers.length}
           variant="outlined"
-          color="primary"
+          className={classes.root}
           page={currentPage}
           onChange={handleChange}
         />
