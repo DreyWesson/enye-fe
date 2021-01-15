@@ -53,7 +53,6 @@ const Customers = ({ records }) => {
     indexOfFirstCustomer,
     indexOfLastCustomer
   );
-  console.log(currentCustomers.length);
 
   const pageNumbers = [];
   function setResultsPerPage(length) {
