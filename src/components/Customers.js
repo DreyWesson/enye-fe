@@ -32,26 +32,28 @@ const Customers = ({ records }) => {
 
   const searchRecord = () =>
     profiles.filter((data) => {
+      function strSearch(search, type = "str") {
+        return type === "num"
+          ? search.toString().includes(searchValue.toLowerCase())
+          : search.toLowerCase().includes(searchValue.toLowerCase());
+      }
+
       return (function name(params) {
         if (searchValue == null) return data;
         else if (
-          data.FirstName.toLowerCase().includes(searchValue.toLowerCase()) ||
-          data.LastName.toLowerCase().includes(searchValue.toLowerCase()) ||
-          data.UserName.toLowerCase().includes(searchValue.toLowerCase()) ||
-          data.Gender.toLowerCase().includes(searchValue.toLowerCase()) ||
-          data.PaymentMethod.toLowerCase().includes(
-            searchValue.toLowerCase()
-          ) ||
-          data.URL.toLowerCase().includes(searchValue.toLowerCase()) ||
-          data.CreditCardType.toLowerCase().includes(
-            searchValue.toLowerCase()
-          ) ||
-          data.CreditCardNumber.includes(searchValue.toLowerCase()) ||
-          data.Longitude.toString().includes(searchValue.toLowerCase()) ||
-          data.Latitude.toString().includes(searchValue.toLowerCase()) ||
-          data.LastLogin.includes(searchValue.toLowerCase()) ||
-          data.PhoneNumber.includes(searchValue.toLowerCase()) ||
-          data.MacAddress.includes(searchValue.toLowerCase())
+          strSearch(data.FirstName) ||
+          strSearch(data.LastName) ||
+          strSearch(data.UserName) ||
+          strSearch(data.Gender) ||
+          strSearch(data.PaymentMethod) ||
+          strSearch(data.URL) ||
+          strSearch(data.CreditCardType) ||
+          strSearch(data.CreditCardNumber, "num") ||
+          strSearch(data.Longitude, "num") ||
+          strSearch(data.Latitude, "num") ||
+          strSearch(data.LastLogin, "num") ||
+          strSearch(data.PhoneNumber, "num") ||
+          strSearch(data.MacAddress, "num")
         ) {
           return data;
         }
