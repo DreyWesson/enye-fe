@@ -8,6 +8,9 @@
 .customers__list span {
   color: green;
 }
+.customers__list p {
+  font-weight: bold;
+}
 
 .customers__listContainer {
   min-height: 76vh;
@@ -57,6 +60,8 @@
   display: flex;
   justify-content: center;
   margin: 10px;
+  position: sticky;
+  top: 60px;
 }
 .customers__search label {
   position: absolute;
@@ -75,7 +80,6 @@
   outline-width: 0;
 }
 .customers__searchIcon {
-  /* padding: 15px; */
   height: 33px !important;
   background-color: #3f51b5;
   color: rgba(63, 81, 181, 0.5);
