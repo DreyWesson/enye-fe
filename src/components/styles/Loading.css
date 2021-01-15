@@ -8,6 +8,7 @@
 #loader {
   border: 1rem solid #f8f9fa;
   border-radius: 50%;
+  background: rgb(230 227 216);
   border-top: 1rem solid #e79324;
   width: 8rem;
   height: 8rem;
