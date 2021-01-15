@@ -7,10 +7,10 @@ export function Header() {
       {/* Logo on the left */}
       <img
         className="header__logo"
-        src="https://cdn1.vectorstock.com/i/1000x1000/25/70/shopping-cart-icon-vector-12712570.jpg"
+        src="https://images.vexels.com/media/users/3/140748/isolated/preview/5b078a59390bb4666df98b49f1cdedd0-male-profile-avatar-by-vexels.png"
         alt="cart logo"
       />
-      <h4>Records</h4>
+      <h2>PROFILES</h2>
       {/* Search box */}
     </nav>
   );

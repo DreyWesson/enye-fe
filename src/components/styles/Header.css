@@ -1,7 +1,7 @@
 .header {
   padding-left: 10px;
   padding-right: 10px;
-  background: #131921;
+  background: #e79324;
   display: flex;
   align-items: center;
   position: sticky;
@@ -11,24 +11,14 @@
 }
 .header__logo {
   width: 30px;
-  margin: 10px 10px;
+  margin: 10px 2px;
   object-fit: contain;
+  /* -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); */
 }
-.header h4 {
-  color: #fff;
-}
-.header__option {
-  display: flex;
-  color: #fff;
-  align-items: center;
-  padding-left: 10px;
-}
-.header__optionFilter {
-  margin-left: 5px;
-}
-.header__searchFilter {
-  margin: 0 5px;
-  color: #fff;
+.header h2 {
+  font-size: 16px;
+  padding-top: 10px;
 }
 
 @media only screen and (min-width: 568px) {

@@ -7,8 +7,10 @@ import { Button, makeStyles } from "@material-ui/core";
 const Customers = ({ records }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [customersPerPage] = useState(20);
-  const [showMore, setShowMore] = useState(false);
+  const [showMore, setShowMore] = useState(true);
   const [searchValue, setSearchValue] = useState(null);
+  const [activeSearch, setActiveSearch] = useState(false);
+
   const useStyles = makeStyles((theme) => ({
     root: {
       "& .Mui-selected": {
@@ -47,7 +49,7 @@ const Customers = ({ records }) => {
         }
       })();
     });
-  // searchRecord();
+
   let currentCustomers = searchValue === null ? profiles : searchRecord();
   currentCustomers = currentCustomers.slice(
     indexOfFirstCustomer,
@@ -79,9 +81,19 @@ const Customers = ({ records }) => {
           id="searchInput"
           className="customers__searchInput"
           placeholder="Search customer..."
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+            !activeSearch && setActiveSearch(!activeSearch);
+          }}
         />
       </div>
+      <p
+        className={`customers__searchResults ${
+          !activeSearch && "showSearchResult"
+        }`}
+      >
+        About {searchRecord().length} results
+      </p>
 
       <div className="customers__listContainer">
         {currentCustomers?.map(
@@ -141,7 +153,7 @@ const Customers = ({ records }) => {
                   </p>
                 </div>
 
-                <div className={`${showMore || "customers__listMore"}`}>
+                <div className={`${showMore ? "customers__listMore" : null}`}>
                   <p className="customers__detail">
                     <span>Longitude: </span>
                     {Longitude}
@@ -173,11 +185,9 @@ const Customers = ({ records }) => {
                 </div>
                 <Button
                   className="customers__showBtn"
-                  onClick={(e) =>
-                    !showMore ? setShowMore(true) : setShowMore(false)
-                  }
+                  onClick={(e) => setShowMore(!showMore)}
                 >
-                  {showMore ? <>Show less</> : <>Show more</>}
+                  {!showMore ? <>Show less</> : <>Show more</>}
                 </Button>
               </div>
             </div>
