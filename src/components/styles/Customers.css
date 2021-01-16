@@ -10,6 +10,7 @@
 }
 .customers__list p {
   font-weight: bold;
+  margin-bottom: 0;
 }
 
 .customers__listContainer {
@@ -62,6 +63,7 @@
   margin: 10px;
   position: sticky;
   top: 60px;
+  z-index: 200;
 }
 .customers__search label {
   position: absolute;
@@ -73,7 +75,7 @@
 }
 .customers__searchInput {
   height: 12px;
-  border: 1px solid #844b00;
+  border: 1px solid #70757a;
   padding: 17px;
   width: 80vw;
   border-radius: 20px;
